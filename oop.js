@@ -1,21 +1,31 @@
 "use strict";
 
 
-function hi(){
-    console.log('Say hi!');
-    // debugger;
-}
-hi();
+// console.log(typeof(String(4)));
 
-const arr = [1,7,14,30,25],
-        sorted = arr.sort(compareNum);
+// const num =5;
+// console.log("https://vk.com/catalog/"+num);
+// const fontSize=26+'px';
 
-function compareNum(a,b){
-    return a-b;
-}
+// console.log(typeof(Number('4')));
+// console.log(typeof((+'4')));
+// console.log(typeof(parseInt("15px", 10)));
 
-console.log(arr);
-console.log(sorted);
+// let answer =+prompt("hello","");
+
+// let switcher;
+// if(switcher){
+//     console.log("true");
+// } else{
+//     console.log("false");
+// }
+
+// console.log(typeof(Boolean(4)));
+
+
+console.log(typeof(!!null));
+
+
 // let str = "some";
 // let strObj = new String(str);
 
