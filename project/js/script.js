@@ -24,5 +24,3 @@ const movieDB = {
     ]
 };
 
-console.log(movieDB.movies.sort());
-
