@@ -29,7 +29,7 @@ div.classList.add('black');
 // wrapper.prepend(div);
 // hearts[0].after(div);
 // circles[0].remove();
-hearts[0].replaceWith(battons[0]);
+// hearts[0].replaceWith(battons[0]);
 // wrapper.appendChild(div);
 // wrapper.insertBefore(div, hearts[1]);
 // wrapper.removeChild(hearts[1]);
