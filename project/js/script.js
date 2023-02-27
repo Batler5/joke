@@ -1,6 +1,6 @@
 /* Задания на урок:
 
-1) Удалить все рекламные блоки со страницы (правая часть сайта)
+1) Удалить все рекламные блоки со страницы (правая часть сайта) +
 
 2) Изменить жанр фильма, поменять "комедия" на "драма"
 
@@ -23,4 +23,31 @@ const movieDB = {
         "Скотт Пилигрим против..."
     ]
 };
+
+
+const adverts = document.querySelectorAll('.promo__adv img');
+adverts.forEach(items=>{
+items.remove();
+});
+
+
+const poster = document.querySelector('.promo__bg'),
+    genre = poster.querySelector('.promo__genre'),
+    interActive = document.querySelector('.promo__interactive-list');
+
+genre.textContent='ДРАМА';
+
+
+poster.style.backgroundImage = 'url(img/bg.jpg)'
+
+interActive.innerHTML = "";
+movieDB.movies.sort();
+movieDB.movies.forEach((film, i)=>{
+interActive.innerHTML +=`
+<li class="promo__interactive-item">${i+1} ${film}
+    <div class="delete"></div>
+    </li>
+`
+
+});
 
