@@ -1,18 +1,37 @@
 "use strict"
 
-let a = 5,
-b=a;
-b=b+5;
-console.log(b,a);
+function brightest(colors){
+    let colorIndex = 0,
+        maxValue = 0
+    for (let i = 0; i < colors.lenght; i++) {
+      let color = colors[i],
+          r = ParseInt(color.slise(1,3), 16),
+          g = ParseInt(color.slise(3,5), 16),
+          b = ParseInt(color.slise(5,7), 16),
+          value = Math.max(r,g,b)
+      if (value > maxValue) {
+        maxValue = value
+        colorIndex = i
+      }  
+    }
+    return colors [colorIndex]
+  }
+
+  console.log(brightest(["#FFFFFF", "#123456", "#000000"]));
+
+// let a = 5,
+// b=a;
+// b=b+5;
+// console.log(b,a);
 
 
-let obj ={
-    a:5,
-    b:1
-};
-const copy = obj;
-copy.a=10;
-console.log(copy, obj);
+// let obj ={
+//     a:5,
+//     b:1
+// };
+// const copy = obj;
+// copy.a=10;
+// console.log(copy, obj);
 
 
 // function copy(mainObj){
@@ -39,70 +58,70 @@ console.log(copy, obj);
 // console.log(newNumbers);
 
 
-const add ={
-    d:17,
-    e:20
-};
-let clone = (Object.assign({}, add));
-clone.d = 20;
-console.log(add, clone);
+// const add ={
+//     d:17,
+//     e:20
+// };
+// let clone = (Object.assign({}, add));
+// clone.d = 20;
+// console.log(add, clone);
 
 
-let oldArray = ['a', 'b', 'c'];
-let newArray = oldArray.slice();
-newArray[1]='sad';
-console.log(newArray, oldArray);
+// let oldArray = ['a', 'b', 'c'];
+// let newArray = oldArray.slice();
+// newArray[1]='sad';
+// console.log(newArray, oldArray);
 
 
-const video =['youtube','vimeo','rutube'],
-    blogs=['wod','live','blog'],
-    internet=[...video,...blogs, 'vk', 'facebook'];
-    console.log(internet);
+// const video =['youtube','vimeo','rutube'],
+//     blogs=['wod','live','blog'],
+//     internet=[...video,...blogs, 'vk', 'facebook'];
+//     console.log(internet);
 
 
 
     
     
-const num = [2,5,7];
-function log(a,b,c){ console.log(a);    console.log(b);   console.log(c); }
-log(...num)
+// const num = [2,5,7];
+// function log(a,b,c){ console.log(a);    console.log(b);   console.log(c); }
+// log(...num)
 
 
 
-const array = ['a','b'];
-const newArr=[...array];
-newArr[0]='c';
-console.log(array, newArr);
+// const array = ['a','b'];
+// const newArr=[...array];
+// newArr[0]='c';
+// console.log(array, newArr);
 
 
-const q={
-one:1,
-two:2
-};
-const newObj={...q};
-newObj.one=3;
-console.log(q, newObj);
+// const q={
+// one:1,
+// two:2
+// };
+// const newObj={...q};
+// newObj.one=3;
+// console.log(q, newObj);
 
 
 
-let arr = [11,2,34,4,-5,6];
-let str = 'mfdlk dmfslkmf fdmslfm fdlskm';
-arr.sort(compareNum);
-function compareNum(a, b){
-    return a-b;
-}
-console.log(arr);
-arr.forEach(function(item, i, arr){
-console.log(`${i}: ${item} Внутри массива ${arr}`);
-});
+// let arr = [11,2,34,4,-5,6];
+// let str = 'mfdlk dmfslkmf fdmslfm fdlskm';
+// arr.sort(compareNum);
+// function compareNum(a, b){
+//     return a-b;
+// }
+// console.log(arr);
+// arr.forEach(function(item, i, arr){
+// console.log(`${i}: ${item} Внутри массива ${arr}`);
+// });
 
-arr.pop();
-arr.push(10);
-arr[99]=3;
-console.log(arr);
-for(let value of arr){
-    console.log(value);
-}
+// arr.pop();
+// arr.push(10);
+// arr[99]=3;
+// console.log(arr);
+// for(let value of arr){
+//     console.log(value);
+// }
 
 
 // const options = {
