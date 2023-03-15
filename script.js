@@ -1,23 +1,121 @@
 "use strict"
 
-function brightest(colors){
-    let colorIndex = 0,
-        maxValue = 0
-    for (let i = 0; i < colors.lenght; i++) {
-      let color = colors[i],
-          r = ParseInt(color.slise(1,3), 16),
-          g = ParseInt(color.slise(3,5), 16),
-          b = ParseInt(color.slise(5,7), 16),
-          value = Math.max(r,g,b)
-      if (value > maxValue) {
-        maxValue = value
-        colorIndex = i
-      }  
-    }
-    return colors [colorIndex]
-  }
+function bb(time) {
+  let second=0,
+  minute=0,
+  oclock=0,
+  days=0,
+  year=0,
+  out='';
+if(time<0){return null;}
+if(time==0){return "now";}
 
-  console.log(brightest(["#FFFFFF", "#123456", "#000000"]));
+//СЕКУНДЫ
+
+if (time>=60){
+  second=time%60;
+  time-=second;
+  time/=60; } else {second=time; time=0;}
+
+// Минуты
+
+if(time>=60){
+  minute=time%60;
+time-=minute;
+time/=60; } else {minute=time; time=0;}
+
+//ЧАСЫ
+
+if(time>=24){
+oclock = time%24;
+time-=oclock;
+time/=24; } else {oclock=time;time=0;}
+
+// ДНИ
+
+if(time>=365){
+  days=time%365;
+  time-=days;
+  time/=365;
+  year=time; } else {days=time ;time=0;}
+
+// сбор вывода
+
+switch(second){
+  case 0: break;
+  case 1:  out =`${second} second`;
+  break;
+  default: out =`${second} seconds`;
+}
+switch(minute){
+  case 0: break;
+  case 1: if(out!=''){ out = `${minute} minute and ${out}`;} else {out = `${minute} minute`;}
+  break;
+  default: if(out!=''){ out =`${minute} minutes and ${out}`;} else {out = `${minute} minutes`;}
+}
+switch(oclock){
+  case 0: break;
+  case 1:if(second==0 && minute==0){out=`${oclock} hour`;} else if(second!=0 && minute!=0){ out =`${oclock} hour, ${out}`;} else{ out =`${oclock} hour and ${out}`;}
+  break;
+  default: if(second==0 && minute==0){out=`${oclock} hours`;} else if(second!=0 && minute!=0){ out =`${oclock} hours, ${out}`;} else{ out =`${oclock} hours and ${out}`;}
+}
+switch(days){
+  case 0: break;
+  case 1: if(second==0 && minute==0 && oclock ==0){ out = `${days} day`;} 
+  else if(second!=0 && minute!=0 || second!=0 && oclock!=0 || oclock!=0 && minute!=0) {out=`${days} day, ${out}`;} 
+  else {out=`${days} day and ${out}`;} 
+  break;
+  default:if(second==0 && minute==0 && oclock ==0){ out = `${days} days`;} 
+  else if(second!=0 && minute!=0 || second!=0 && oclock!=0 || oclock!=0 && minute!=0) {out=`${days} days, ${out}`;} 
+  else {out=`${days} days and ${out}`;}
+  break;
+}
+switch(year){
+  case 0: break;
+  case 1: if(second==0 && minute==0 && oclock==0 && days==0){out=`${year} year`;}
+  else if (second==0 && minute==0 && oclock==0 || second==0 && oclock==0 && days==0 || second==0 && minute==0 && days==0 || minute==0 && oclock ==0 && days==0 || minute==0 && oclock==0 && days==0){
+    out=`${year} year and ${out}`;
+  }else {out=`${year} year, `;}
+  break;
+  default: if(second==0 && minute==0 && oclock==0 && days==0){out=`${year} years`;}
+  else if (second==0 && minute==0 && oclock==0 || second==0 && oclock==0 && days==0 || second==0 && minute==0 && days==0 || minute==0 && oclock ==0 && days==0 || minute==0 && oclock==0 && days==0){
+    out=`${year} years and ${out}`;
+  }else {out=`${year} years, ${out}`;}
+  break;
+}
+return out;
+}
+
+
+
+console.log(bb(7213200));
+
+
+
+
+
+// function brightest(colors){
+//   let colorIndex = 0,
+//       maxValue = 0
+//   for (let i = 0; i < colors.lenght; i++) {
+//     let color = colors[i],
+//         r = ParseInt(color.slise(1,3), 16),
+//         g = ParseInt(color.slise(3,5), 16),
+//         b = ParseInt(color.slise(5,7), 16),
+//         value = Math.max(r,g,b)
+//     if (value > maxValue) {
+//       maxValue = value
+//       colorIndex = i
+//     }  
+//   }
+//   return colors [colorIndex]
+// }
+//   console.log(brightest(["#27DADF", "#AA5D23", "#624B20", "#5E990C", "#FCD4FC", "#E897ED", "#2B6679", "#1873F9","#CEFE7A", "#DBE28C", "#FFE74F"]));
+
+
+
+
+
 
 // let a = 5,
 // b=a;
