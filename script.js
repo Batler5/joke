@@ -127,26 +127,61 @@ const explode =(str)=>{
         newStr+=str[i];
       }
     }
-
-
-
-
   return newStr;
 }
 
+console.log(explode('3323'));
+
 function getParticipants(h){
-  for(let i=0,k=1;i<h;i+=k++);
+  let k=1;
+  for(let i=0;i<h;i+=k++);
   if(h==0){return 0;}
   if(h==1){return 2;}
   return k;
 }
 
 
+const duplicateEncode = (word) => {
+  let newWord='';
+  let bool=false;
+  word=word.toLowerCase();
+  const str2=word.split('');
+  word=word.split('');
+    for (let i =0; i<word.length; i++){
+    for (let j =0; j<word.length; j++){
+      if(i!=j){
+        if(word[i]==str2[j]){
+        bool=true;
+      }
+    }  
+    }
+    switch(bool){
+      case true: newWord+=')'; break;
+      case false: newWord+='('; break;
+    }
+    bool=false;
+  }
+ return newWord;
+}
 
+const nthFibo = (n) => {
+  let first =0,
+      now=0,
+      next=0,
+      second=1;
+      if (n==1){return 0;}
+      if (n==2){return 1;}
+      if(n==3){return 1;}
+      if(n==4){return 2;}
+      for(let i=0; i<n-2; i++){
+        next=second+first;        
+        now=first+second;        
+        first=second;        
+        second=next;        
+      }
+      return now;
+}
 
-
-
-console.log(explode("312"));
 
 
 // let a = 5,
