@@ -86,34 +86,67 @@ switch(year){
 return out;
 }
 
+function brightest(colors){  
+  let colorIndex = 0,
+      maxValue = 0;
+  for (let i = 0; i < colors.length; i++) {
+    let color = colors[i],
+        r = parseInt(color.slice(1,3), 16),
+        g = parseInt(color.slice(3,5), 16),
+        b = parseInt(color.slice(5,7), 16),
+        value = Math.max(r,g,b);
+        if (value > maxValue) {
+      maxValue = value
+      colorIndex = i
+    }  
+  }
+  return colors [colorIndex]
+}
+  
+function isIsogram(str){
+  str=str.toLowerCase();
+  const str2=str.split('');
+  str=str.split('');
+    for (let i =0; i<str.length; i++){
+    for (let j =0; j<str.length; j++){
+      if(i!=j){
+        if(str[i]==str2[j]){
+        return false;
+      } else { continue; }
+    }  
+    }
+  }
+ return true;
+}
 
-console.log(bb(7213200));
+const explode =(str)=>{
+  let newStr='';
+  str=str.split('');
+    for(let i = 0; i<str.length;i++){
+      for( let j=0; j<str[i]; j++){
+        newStr+=str[i];
+      }
+    }
+
+
+
+
+  return newStr;
+}
+
+function getParticipants(h){
+  for(let i=0,k=1;i<h;i+=k++);
+  if(h==0){return 0;}
+  if(h==1){return 2;}
+  return k;
+}
 
 
 
 
 
-// function brightest(colors){
-//   let colorIndex = 0,
-//       maxValue = 0
-//   for (let i = 0; i < colors.lenght; i++) {
-//     let color = colors[i],
-//         r = ParseInt(color.slise(1,3), 16),
-//         g = ParseInt(color.slise(3,5), 16),
-//         b = ParseInt(color.slise(5,7), 16),
-//         value = Math.max(r,g,b)
-//     if (value > maxValue) {
-//       maxValue = value
-//       colorIndex = i
-//     }  
-//   }
-//   return colors [colorIndex]
-// }
-//   console.log(brightest(["#27DADF", "#AA5D23", "#624B20", "#5E990C", "#FCD4FC", "#E897ED", "#2B6679", "#1873F9","#CEFE7A", "#DBE28C", "#FFE74F"]));
 
-
-
-
+console.log(explode("312"));
 
 
 // let a = 5,
