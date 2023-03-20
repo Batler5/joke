@@ -2,6 +2,16 @@ body{
     background: rgba(0, 4, 10, 0.945);
 }
 button{
-    background-color:aqua;
-    margin-left: 0%;
+    background-color:#008B8B;
+    margin-left: 1%;
+}
+.text{
+    color: #008B8B;
+    text-align: center;
+    font-size: 64px;
+}
+.user__img{
+    align-items: center;
+    width: 777px;
+    height: 777px;
 }
