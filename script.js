@@ -119,6 +119,26 @@ function isIsogram(str){
  return true;
 }
 
+function numberOfPairs(gloves)
+{
+  let newMass=gloves.slice();
+  let sum=0;
+  for (let i =0; i<newMass.length; i++){
+    for (let j =0; j<newMass.length; j++){
+      if(i!=j){
+        if(newMass[i]==newMass[j] && newMass[i]!=undefined && newMass[j]!=undefined){
+        sum++;
+          delete newMass[i];
+          delete newMass[j];
+      } else { continue; }
+    }  
+    }
+  }
+  console.log(newMass);
+  console.log(gloves);
+  return sum;
+}
+
 const explode =(str)=>{
   let newStr='';
   str=str.split('');
@@ -130,7 +150,7 @@ const explode =(str)=>{
   return newStr;
 }
 
-console.log(explode('3323'));
+// console.log(explode('3323'));
 
 function getParticipants(h){
   let k=1;
@@ -181,7 +201,137 @@ const nthFibo = (n) => {
       }
       return now;
 }
+function head(args){
+  return args[0];
+}
+function tail(args) {
+  let newArr=[];
+  for(let i=1; i<args.length;i++){
+    newArr[i-1]=args[i];
+  }  
+    return newArr;
+}
 
+function init(args){
+  args.pop();
+  return args;
+}
+function last(args){
+  let late=args.pop(1);
+  return late;
+}
+
+const deepCount=(arr)=>{
+  let count = 0;
+  for (let i = 0; i < arr.length; i++) {
+    if (Array.isArray(arr[i])) {
+      count += deepCount(arr[i]);
+    } else {
+      count++;
+    }
+  }
+  return count;
+  }  
+
+
+  function getLengthOfMissingArray(n) {
+    let firstMinLength=0;
+    const widthMass=n.length;
+    let newMass=[];
+    let minLength=10000000;
+    let index=0;
+    for(let i=0; i<n.length;i++){
+      if(n[i].length==0){
+        return 0;
+      }
+    }
+    if (n.length==0){return 0;}
+    
+    for(let i=0; i<widthMass;i++){
+        for(let j=0; j<n.length;j++){
+          if(n[j].length<minLength){
+        index=j;
+        minLength=n[j].length;
+        }    
+      }
+      newMass.push(n[index]);
+      n.splice(index, 1);
+      if(i==0){firstMinLength=minLength;}
+      minLength=10000000;
+   }
+   for (let i=0; i<newMass.length; i++){
+    if(newMass[i].length!=firstMinLength+i){
+      return firstMinLength+i;
+    }
+   }
+  }
+
+  function getLengthOfMissingArray(n) { 
+    if (n === null || n.length === 0) {
+        return 0; 
+    }
+    for (let i = 0; i < n.length; i++) { 
+        if (n[i] === null || n[i].length === 0) { 
+          return 0; 
+        } 
+      } 
+      let firstMinLength = Infinity; 
+      const arrayLength = n.length; 
+      let newMass = []; 
+      for (let i = 0; i < arrayLength; i++) { 
+          const minLength = Math.min(...n.map(arr => arr.length));
+          const index = n.findIndex(arr => arr.length === minLength);
+          newMass.push(n[index]); 
+          n.splice(index, 1); 
+          if (i === 0) {
+              firstMinLength = minLength;
+          } 
+     } 
+     for (let i = 0; i < newMass.length; i++) { 
+      if (newMass[i].length !== firstMinLength + i) { 
+        return firstMinLength + i; 
+      } 
+     } 
+  }
+
+  function sortByBit(arr) { 
+    let newArr =[]; 
+    let arrLen=[]; 
+    for(let i = 0; i < arr.length; i++) { 
+      let num = arr[i].toString(2); 
+      newArr.push(num); 
+    } 
+    newArr.sort((a, b) => { 
+      let countA = a.split('1').length - 1; 
+      let countB = b.split('1').length - 1; 
+      if (countA === countB) {
+        // Сортировка чисел с одинаковым количеством единиц по возрастанию
+        return parseInt(a, 2) - parseInt(b, 2); 
+      } else {
+        return countA - countB; 
+      }
+    }); 
+    for(let i = 0; i < newArr.length; i++) { 
+      arr[i]=parseInt(newArr[i], 2);
+    } 
+    return arr; 
+  } 
+  console.log(sortByBit([3, 8, 3, 6, 5, 7, 9, 1]));
+  //   function compareByBitCount(a, b) {
+  //   // сравниваем два числа по количеству единиц в их двоичном представлении
+  //   const bitsA = bitCount(a);
+  //   const bitsB = bitCount(b);
+  //   return bitsA - bitsB;
+  // }
+  // function bitCount(num) {
+  //   // считаем количество единиц в двоичном представлении числа
+  //   let count = 0;
+  //   while (num) {
+  //     count += num & 1;
+  //     num >>= 1;
+  //   }
+  //   return count;
+  // }  
 
 
 // let a = 5,
