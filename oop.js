@@ -1,6 +1,23 @@
 "use strict";
 
-
+function sumIntervals(intervals) {
+  intervals.sort((a, b) => a[0] - b[0]);
+  let start = intervals[0][0];
+  let end = intervals[0][1];
+  let sum = 0;
+  for (let i = 1; i < intervals.length; i++) {
+    let [s, e] = intervals[i];
+    if (s <= end) {
+      end = Math.max(end, e);
+    } else {
+      sum += end - start;
+      start = s;
+      end = e;
+    }
+  }
+  sum += end - start;
+  return sum;
+}
 // console.log(typeof(String(4)));
 
 // const num =5;

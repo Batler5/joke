@@ -293,6 +293,22 @@ const deepCount=(arr)=>{
       } 
      } 
   }
+  var countBits = function(n) {
+    if(n==0){return 0;}
+    let sum=0;    
+    for(let i=0; i<40; i++){          
+      if(n>2){
+        if(n%2==1)
+        {
+            sum++;  
+            n-=1;                      
+        }          
+      }
+      n=Math.round(n/2);      
+    }
+  sum++;
+    return sum;
+  };
 
   function sortByBit(arr) { 
     let newArr =[]; 
@@ -316,23 +332,65 @@ const deepCount=(arr)=>{
     } 
     return arr; 
   } 
-  console.log(sortByBit([3, 8, 3, 6, 5, 7, 9, 1]));
-  //   function compareByBitCount(a, b) {
-  //   // сравниваем два числа по количеству единиц в их двоичном представлении
-  //   const bitsA = bitCount(a);
-  //   const bitsB = bitCount(b);
-  //   return bitsA - bitsB;
-  // }
-  // function bitCount(num) {
-  //   // считаем количество единиц в двоичном представлении числа
-  //   let count = 0;
-  //   while (num) {
-  //     count += num & 1;
-  //     num >>= 1;
-  //   }
-  //   return count;
-  // }  
+  
+  function recycle(array) {
+    let paper = [];
+    let glass=[];
+    let organic=[];
+    let plastic=[];
+    for(let i=0; i<array.length; i++){
+        switch(array[i].material) {
+          case 'paper': paper.push(array[i].type); break;
+          case 'glass': glass.push(array[i].type); break;
+          case 'organic': organic.push(array[i].type); break;
+          case 'plastic': plastic.push(array[i].type); break;          
+        }
+        switch(array[i].secondMaterial) {
+          case 'paper': paper.push(array[i].type); break;
+          case 'glass': glass.push(array[i].type); break;
+          case 'organic': organic.push(array[i].type); break;
+          case 'plastic': plastic.push(array[i].type); break;          
+        }
+    }
+    outputArr=[paper, glass, organic, plastic]
+    return outputArr;
+  }
 
+  function compareByBitCount(a, b) {
+    // сравниваем два числа по количеству единиц в их двоичном представлении
+    const bitsA = bitCount(a);
+    const bitsB = bitCount(b);
+    return bitsA - bitsB;
+
+  }
+  function bitCount(num) {
+    // считаем количество единиц в двоичном представлении числа
+    let count = 0;
+    while (num) {
+      count += num & 1;
+      num >>= 1;
+    }
+    return count;
+  }  
+
+  function sumIntervals(intervals){   
+      intervals.sort((a, b) => a[0] - b[0]);
+      let start = intervals[0][0];
+      let end = intervals[0][1];
+      let sum = 0;
+      for (let i = 1; i < intervals.length; i++) {
+        let [s, e] = intervals[i];
+        if (s <= end) {
+          end = Math.max(end, e);
+        } else {
+          sum += end - start;
+          start = s;
+          end = e;
+        }
+      }
+      sum += end - start;
+      return sum;
+  }
 
 // let a = 5,
 // b=a;
