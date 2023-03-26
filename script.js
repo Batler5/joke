@@ -392,6 +392,127 @@ const deepCount=(arr)=>{
       return sum;
   }
 
+function createSecretHolder(secret) {
+function setSecret(){s = secret;}
+function getSecret(){ return s;}
+return{setSecret: setSecret,
+getSecret: getSecret
+};
+}
+
+function counter() {
+  var count = 0;
+  
+  // внутренний метод, доступный только изнутри функции counter
+  function increment() {
+    count++;
+  }
+  
+  // внешний метод, который предоставляет доступ к внутреннему состоянию счетчика
+  function getCount() {
+    return count;
+  }
+  
+  // возвращаем объект, содержащий внешний метод
+  return {
+    increment: increment,
+    getCount: getCount
+  };
+}
+
+function checkCoupon(enteredCode, correctCode, currentDate, expirationDate){
+  const date = new Date(Date.parse(currentDate));
+  const endDate = new Date(expirationDate);
+  if(enteredCode == correctCode && date<=endDate){
+      return true;
+  } else {return false;}
+}
+
+const unluckyDays = (year)=>{
+  let sum=0;
+  let date=new Date(Date.parse(`${year}-01-13`));
+  for(let i=0; i<12;i++){
+    if( date.toLocaleString('en-US', {weekday: 'long'})=='Friday'){sum++;}
+date.setMonth(date.getMonth()+1);
+  }
+  return sum;
+}
+
+function myLanguages(results) {
+let sortedLanguages = Object.entries(results).sort((a, b) => b[1] - a[1]);
+console.log(sortedLanguages);
+let obj =[];
+for (let i=0; i<sortedLanguages.length;i++){
+  let sortedMass=sortedLanguages[i];
+  const keys = sortedMass[0];
+  const value = results[keys];
+  if(value>=60){obj.push(keys);}
+}
+
+return obj;
+}
+
+const runLengthEncoding = function(str){
+  str = str.split('');
+  let obj=[];
+  for(let i=0; i<str.length;i++){
+    let n=1;
+    for(let j=i+1; j<str.length;j++){
+      if (str[i]==str[j]){n++;}
+      else{break;}
+      // str.splice(j,1);
+    }
+    obj.push([n ,str[i]]);
+    i+=n-1;
+  }
+  return obj; // << fix this
+}
+
+
+function makeDate (hours, minutes) {
+	const date = new Date();
+	date.setMinutes(minutes);
+	date.setHours(hours);
+	return date;
+}
+
+function handAngle(date){
+  let time = date.getHours();
+  let time2 = date.getMinutes();
+  if(time == 0 && time2 == 0 || time == 12 && time2 == 0){return 0;}
+    let minute = time2*6;
+    let hour = time*30+minute/12;
+    let radians = Math.abs((hour - minute) * Math.PI / 180);
+    if (radians > Math.PI) {
+      radians = 2 * Math.PI - radians;
+    }
+return radians;
+}
+
+function find(object, path) {
+  path=path.split('.');
+  let newPath='';
+  for(let i=0; i<path.length; i++){
+    newPath +=`['${path[i]}']`; 
+  }
+  return eval(`object${newPath}`);
+}
+
+function myFunction(callback1, ...args) {  
+  const MyArray = function() {
+  const arr = Array.from(arguments);
+  this.adq = function(callback) {
+    const result = [];
+    for (let i = 0; i < arr.length; i++) {
+      result.push(callback(arr[i], i, arr));
+    }
+    return result;
+  };
+};
+MyArray();
+}
+
+
 // let a = 5,
 // b=a;
 // b=b+5;
