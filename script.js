@@ -372,6 +372,28 @@ const deepCount=(arr)=>{
     }
     return count;
   }  
+  // Объявляем функцию sumIntervals, которая принимает массив интервалов
+function sumIntervals(intervals) {
+  //Создаем пустой массив arr для хранения всех целых чисел из интервалов
+  let arr = [];
+  arr = intervals;
+  // Используем метод forEach для перебора всех интервалов в массиве intervals
+  intervals.forEach(interval => {
+    // Для каждого интервала используем цикл for для перебора всех целых чисел внутри него
+    for (let i = interval[0]; i < interval[1]; i++) {
+      // Добавляем каждое целое число в массив arr
+      arr.push(i);
+    }
+  });
+  //Создаем объект Set из массива arr, чтобы удалить повторяющиеся элементы
+  //Затем преобразуем Set обратно в массив с помощью метода Array.from
+  arr = Array.from(new Set(arr));
+  // Используем метод reduce для получения суммы всех целых чисел в массиве arr
+  const sum = arr.reduce((acc, curr) => acc + curr, 0);
+  // Возвращаем сумму целых чисел
+  return sum;
+}
+// console.log(sumIntervals([[1,4],[7,9]]));
 
   function sumIntervals(intervals){   
       intervals.sort((a, b) => a[0] - b[0]);
