@@ -1,7 +1,12 @@
+﻿// See https://aka.ms/new-console-template for more information
 using System;
 using System.Text.RegularExpressions;
 using System.Collections.Generic;
 using System.Linq;
+
+
+Console.WriteLine("Hello, World!");
+System.Console.WriteLine(MorseCodeDecoder.DecodeBits("101010001110111"));
 
 public class MorseCodeDecoder
 {
@@ -57,16 +62,16 @@ public class MorseCodeDecoder
               case "-...": newStr +="B"; break;
               case "-.-." : newStr +="C";break;
               case "-..": newStr+="D";break;
-                case ".": newStr+="E";break;
+              case ".": newStr+="E";break;
               case "..-.": newStr+="F";break;
               case "--." : newStr+="G";break;
-                case "....": newStr+="H";break;
-                  case "..": newStr += "I";break;
+              case "....": newStr+="H";break;
+              case "..": newStr += "I";break;
               case ".---" : newStr+="J";break;
               case "-.-" : newStr+="K";break;
               case ".-.." : newStr+="L";break;
               case "--" : newStr+="M";break;
-              case"-.": newStr+="N";break;
+              case "-.": newStr+="N";break;
               case "---": newStr+="O";break;
               case ".--.": newStr+="P";break;
               case "--.-": newStr+="Q";break;
