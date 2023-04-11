@@ -1,12 +1,50 @@
 "use strict"
  const btn = document.querySelectorAll('button'),
-    overlay = document.querySelector('.overlay');
+    overlay = document.querySelector('.overlay'),
+    img = document.querySelector('.user__img');
+    
+    console.log(btn);
+    btn[0].style.backgroundColor='red';
+    btn[1].style.borderRadius = '100%';
+    for (let i =0; i<btn.length; i++){
+        btn[i].style.height = '50px';
+        btn[i].style.borderColor = 'green';
+        btn[i].style.borderWidth = '5px';
+    }
+    btn.forEach(item=>{
+        item.style.marginLeft = '12%';
+    });
+
+    const div = document.createElement('div');
+    const text = document.createTextNode('шляпа усатая');
+    
+
+    div.classList.add('black'); // button   
+    div.style.height = '100px';
+    div.style.width = '900px';
+    div.style.backgroundColor = 'red';
+    //document.body.append(div);
+    document.body.append(text);
+    img.before(div);
+   // btn[2].remove();  //document.removeChild(btn[2]);
+   // overlay.replaceChild(btn[0], btn[1]);
+  div.innerHTML = "<h1>Hello World</h1>";
+  div.insertAdjacentHTML('beforeend', '<h2>Hello</h2>');
+    //div.textContent = "HeHeHEHE";
+
+    
+   
+    
+
+
+
 // btn.onclick= function(){
 //     alert('Cliiiiick');
 // };
 // btn.onclick= function(){
 //     alert('Second Cliiiiick');
 // };
+//console.log(Math.pow(82,Math.pow(33, 33)));
 const dell = (event)=>{
     console.log(event.currentTarget);
     console.log(event.type);
