@@ -1,24 +1,20 @@
 "use strict"
  const btn = document.querySelectorAll('button'),
     overlay = document.querySelector('.overlay'),
-    img = document.querySelector('.user__img');
-    
+    img = document.querySelector('.user__img');    
     console.log(btn);
     btn[0].style.backgroundColor='red';
     btn[1].style.borderRadius = '100%';
     for (let i =0; i<btn.length; i++){
         btn[i].style.height = '50px';
         btn[i].style.borderColor = 'green';
-        btn[i].style.borderWidth = '5px';
-    }
+        btn[i].style.borderWidth = '5px';  
+      }
     btn.forEach(item=>{
         item.style.marginLeft = '12%';
     });
-
     const div = document.createElement('div');
-    const text = document.createTextNode('шляпа усатая');
-    
-
+    const text = document.createTextNode('шляпа усатая');   
     div.classList.add('black'); // button   
     div.style.height = '100px';
     div.style.width = '900px';
@@ -32,8 +28,35 @@
   div.insertAdjacentHTML('beforeend', '<h2>Hello</h2>');
     //div.textContent = "HeHeHEHE";
 
-    
-   
+    // Обработчики события
+
+    btn[1].onclick = function() {
+        alert('eto ne rabotaet');
+    } 
+    btn[1].onclick = function() {
+        alert('onclick 2 button');
+    } 
+    btn[2].addEventListener('click', ()=>{
+        alert('click 3 button');
+    });
+    btn[0].addEventListener('mouseenter', (e)=>{
+        console.log('hover first button', e.target);
+        //e.target.remove();
+    });  
+    const dell = (event)=>{
+        console.log(event.currentTarget);
+        console.log(event.type);
+        //console.log(event.target);
+    };
+    overlay.addEventListener('click', dell);
+    const lab = document.querySelector('label');
+    lab.addEventListener('click', (event) => {
+        event.preventDefault();
+        console.log('PPPPDLS how he is search it ?');
+    });
+    btn.forEach((item)=>{
+        item.addEventListener('click', dell, {once: true});
+    });
     
 
 
@@ -45,10 +68,7 @@
 //     alert('Second Cliiiiick');
 // };
 //console.log(Math.pow(82,Math.pow(33, 33)));
-const dell = (event)=>{
-    console.log(event.currentTarget);
-    console.log(event.type);
-};
+
 // btn.addEventListener('click', dell);
 // overlay.addEventListener('click', dell);
 
@@ -59,9 +79,7 @@ const dell = (event)=>{
 //     console.log(e.target);
 // });
 
-btn.forEach((item)=>{
-    item.addEventListener('click', dell, {once: true});
-});
+
 
 
 // let personalMovieDB = 
