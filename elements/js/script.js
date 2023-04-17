@@ -39,5 +39,15 @@ wrapper.append(div);
 div.innerHTML = '<h1>Hello world</h1>';
 div.insertAdjacentHTML('afterend','<h2>Hello</h2>')
 
-
+//console.log(document.querySelector('#current').parentNode);
+console.log(document.querySelector('[data-current="3"]').nextElementSibling);
+//console.log(document.querySelector('#current').parentElement);
+console.log(document.body.firstElementChild);
+console.log(document.body.lastElementChild);
+for (let node of document.body.childNodes){
+     if(node.nodeName=='#text'){
+          continue;
+     }
+     console.log(node);
+}
 
