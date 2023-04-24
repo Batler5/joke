@@ -53,24 +53,26 @@ addFilm.addEventListener('click',(event)=>{
     if(textInput.length < 21) {
         movieDB.movies.push(nameFilm.value);
     } else {
-        let filmText='';
-        for(let i =0; i<17;i++){
-            filmText+=nameFilm.charAt(i);
-        }
-        filmText+='...';
+        let newNameLongFilm='';
+        let filmText = nameFilm;
         console.log(filmText);
+        for(let i =0; i<17;i++){
+            newNameLongFilm+=filmText[i];
+        }
+        newNameLongFilm+='...';
+        console.log(newNameLongFilm);
     }
     
-    // console.log(movieDB.movies);
-    // movieDB.movies.sort();
-    //     for(let i=0; i<last.length; i++){
-    //     last[i].innerHTML = '';
-    //     }   
-    //     for(let i =0; i < last.length; i++){
-    //     last[i].innerHTML +=`<li class="promo__interactive-item">${i+1} ${movieDB.movies[i]}
-    //     <div class="delete"></div>
-    //     </li>`;
-    //     }
+    console.log(movieDB.movies);
+    movieDB.movies.sort();
+        for(let i=0; i<last.length; i++){
+        last[i].innerHTML = '';
+        }   
+        for(let i =0; i < last.length; i++){
+        last[i].innerHTML +=`<li class="promo__interactive-item">${i+1} ${movieDB.movies[i]}
+        <div class="delete"></div>
+        </li>`;
+        }
 });
 
 
