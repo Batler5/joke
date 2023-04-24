@@ -13,7 +13,7 @@
 5) Добавить нумерацию выведенных фильмов */
 
 'use strict';
-
+document.addEventListener('DOMContentLoaded', () => {
 const movieDB = {
     movies: [
         "Логан",
@@ -45,13 +45,21 @@ for(let i =0; i<5; i++){
 }
 
 
-const addFilm = document.querySelector('.add button');
+
+
+const addFilm = document.querySelector('form.add');
 const nameFilm = document.querySelector('.adding__input');
-addFilm.addEventListener('click',(event)=>{
+const checkBox = addFilm.querySelector('[type="checkbox"]');
+
+addFilm.addEventListener('submit',(event)=>{
     event.preventDefault();
     let textInput = nameFilm.value;
+    const favuarite = checkBox.ariaChecked;
+
     if(textInput.length < 21) {
         movieDB.movies.push(nameFilm.value);
+        movieDB.movies.sort();
+        createMOvieList(movieDB.movies, addFilm)
     } else {
         let newNameLongFilm='';
         let filmText = nameFilm;
@@ -75,7 +83,15 @@ addFilm.addEventListener('click',(event)=>{
         }
 });
 
-
+function createMOvieList(films, parent){
+    parent.innerHTML = "";
+   films.forEach ((film, i) => {
+    parent.innerHTML +=`<li class="promo__interactive-item">${i+1} ${film}
+        <div class="delete"></div>
+        </li>`;
+   });
+}
+});
 
 
 
