@@ -88,7 +88,7 @@ addFilm.addEventListener('submit',(event)=>{
         sortArr(movieDB.movies);
         createMOvieList(movieDB.movies, promoList);
     }
-    
+    addFilm.reset();
 });
 //3
 
