@@ -24,64 +24,21 @@ const movieDB = {
     ]
 };
 
-const adb = document.querySelectorAll('.promo__adv img');
-adb.forEach(item => {
-item.remove();
-});
-const genre = document.querySelector('.promo__genre');
-genre.textContent = 'Драма';
-const promImg = document.querySelector('.promo__bg');
-promImg.style.backgroundImage = 'url(img/bg.jpg)';
-movieDB.movies.sort();
-const last = document.querySelectorAll('.promo__interactive-item');
-for(let i=0; i<5; i++){
-    last[i].innerHTML = '';
+const deleteAdv = (arr) => {
+    arr.forEach(item => {
+        item.remove();
+        });
 }
 
-for(let i =0; i<5; i++){
-    last[i].innerHTML +=`<li class="promo__interactive-item">${i+1} ${movieDB.movies[i]}
-    <div class="delete"></div>
-    </li>`;
+const makeChanges = () => {
+    genre.textContent = 'Драма';
+    promImg.style.backgroundImage = 'url(img/bg.jpg)';
+} 
+const sortArr = (arr) => {
+    arr.sort();
 }
 
 
-
-
-const addFilm = document.querySelector('form.add');
-const nameFilm = document.querySelector('.adding__input');
-const checkBox = addFilm.querySelector('[type="checkbox"]');
-
-addFilm.addEventListener('submit',(event)=>{
-    event.preventDefault();
-    let textInput = nameFilm.value;
-    const favuarite = checkBox.ariaChecked;
-
-    if(textInput.length < 21) {
-        movieDB.movies.push(nameFilm.value);
-        movieDB.movies.sort();
-        createMOvieList(movieDB.movies, addFilm)
-    } else {
-        let newNameLongFilm='';
-        let filmText = nameFilm;
-        console.log(filmText);
-        for(let i =0; i<17;i++){
-            newNameLongFilm+=filmText[i];
-        }
-        newNameLongFilm+='...';
-        console.log(newNameLongFilm);
-    }
-    
-    console.log(movieDB.movies);
-    movieDB.movies.sort();
-        for(let i=0; i<last.length; i++){
-        last[i].innerHTML = '';
-        }   
-        for(let i =0; i < last.length; i++){
-        last[i].innerHTML +=`<li class="promo__interactive-item">${i+1} ${movieDB.movies[i]}
-        <div class="delete"></div>
-        </li>`;
-        }
-});
 
 function createMOvieList(films, parent){
     parent.innerHTML = "";
@@ -91,6 +48,64 @@ function createMOvieList(films, parent){
         </li>`;
    });
 }
+
+
+
+const adb = document.querySelectorAll('.promo__adv img');
+deleteAdv(adb);
+const genre = document.querySelector('.promo__genre');
+const promImg = document.querySelector('.promo__bg');
+makeChanges();
+sortArr(movieDB.movies);
+const last = document.querySelectorAll('.promo__interactive-list');
+createMOvieList(movieDB.movies, last);/*
+for(let i=0; i<5; i++){
+    last[i].innerHTML = '';
+}
+
+for(let i =0; i<5; i++){
+    last[i].innerHTML +=`<li class="promo__interactive-item">${i+1} ${movieDB.movies[i]}
+    <div class="delete"></div>
+    </li>`;
+}*/
+
+
+
+const promoList = document.querySelector('.promo__interactive-list');
+const addFilm = document.querySelector('form.add');
+const nameFilm = document.querySelector('.adding__input');
+const checkBox = addFilm.querySelector('[type="checkbox"]');
+//1-2
+addFilm.addEventListener('submit',(event)=>{
+    event.preventDefault();
+    let textInput = nameFilm.value;
+    const favuarite = checkBox.Checked;
+
+    if(textInput.length < 21) {
+        movieDB.movies.push(textInput);
+        movieDB.movies.sort();
+        createMOvieList(movieDB.movies, promoList)
+    } else {
+        let newNameLongFilm='';
+        let filmText = nameFilm.value;
+        for(let i =0; i<17;i++){
+            newNameLongFilm+=filmText[i];
+        }
+        newNameLongFilm+='...';
+        movieDB.movies.push(newNameLongFilm);
+        movieDB.movies.sort();
+        createMOvieList(movieDB.movies, promoList);
+    }
+    
+});
+//3
+
+
+
+
+
+
+
 });
 
 
