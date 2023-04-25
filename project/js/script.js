@@ -58,16 +58,8 @@ const promImg = document.querySelector('.promo__bg');
 makeChanges();
 sortArr(movieDB.movies);
 const last = document.querySelectorAll('.promo__interactive-list');
-createMOvieList(movieDB.movies, last);/*
-for(let i=0; i<5; i++){
-    last[i].innerHTML = '';
-}
+createMOvieList(movieDB.movies, last);
 
-for(let i =0; i<5; i++){
-    last[i].innerHTML +=`<li class="promo__interactive-item">${i+1} ${movieDB.movies[i]}
-    <div class="delete"></div>
-    </li>`;
-}*/
 
 
 
@@ -83,7 +75,7 @@ addFilm.addEventListener('submit',(event)=>{
 
     if(textInput.length < 21) {
         movieDB.movies.push(textInput);
-        movieDB.movies.sort();
+        sortArr(movieDB.movies);
         createMOvieList(movieDB.movies, promoList)
     } else {
         let newNameLongFilm='';
@@ -93,7 +85,7 @@ addFilm.addEventListener('submit',(event)=>{
         }
         newNameLongFilm+='...';
         movieDB.movies.push(newNameLongFilm);
-        movieDB.movies.sort();
+        sortArr(movieDB.movies);
         createMOvieList(movieDB.movies, promoList);
     }
     
