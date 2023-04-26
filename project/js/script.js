@@ -47,6 +47,16 @@ function createMOvieList(films, parent){
         <div class="delete"></div>
         </li>`;
    });
+
+   const deleteFilm = document.querySelectorAll('.delete').forEach((btn, i)=>{
+
+    btn.addEventListener('click', () =>{
+        btn.parentElement.remove();
+        movieDB.movies.splice(i,1);
+        createMOvieList(movieDB.movies, promoList);
+    });
+    });
+    sortArr(films);
 }
 
 
@@ -71,32 +81,31 @@ const checkBox = addFilm.querySelector('[type="checkbox"]');
 addFilm.addEventListener('submit',(event)=>{
     event.preventDefault();
     let textInput = nameFilm.value;
-    const favuarite = checkBox.Checked;
-
-    if(textInput.length < 21) {
+    const favuarite = checkBox.ariaChecked;
+        
+    if(textInput){
+        if(textInput.length < 21) {
         movieDB.movies.push(textInput);
-        sortArr(movieDB.movies);
         createMOvieList(movieDB.movies, promoList)
-    } else {
+        } else {
         let newNameLongFilm='';
         let filmText = nameFilm.value;
-        for(let i =0; i<17;i++){
+        for(let i =0; i<20;i++){
             newNameLongFilm+=filmText[i];
         }
         newNameLongFilm+='...';
         movieDB.movies.push(newNameLongFilm);
-        sortArr(movieDB.movies);
         createMOvieList(movieDB.movies, promoList);
+        }
+        //addFilm.reset();
+        event.target.reset();
+        //4 ???
+        if (!favuarite) {console.log('Добавлен любимый фильм.');}
     }
-    addFilm.reset();
+
+    
 });
-//3
-
-
-
-
-
-
+//3 in function createMovieList
 
 });
 
