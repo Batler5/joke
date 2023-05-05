@@ -102,7 +102,7 @@ addFilm.addEventListener('submit',(event)=>{
         if (!favuarite) {console.log('Добавлен любимый фильм.');}
     }
 });
-//3 in function createMovieList
+//3 in function deleteFilm
 
 });
 
