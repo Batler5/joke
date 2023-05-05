@@ -15,3 +15,8 @@ button{
     width: 777px;
     height: 777px;
 }
+.box{
+    width: 150px;
+    height: 100px;
+    background-color: red;
+}

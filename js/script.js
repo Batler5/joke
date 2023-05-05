@@ -58,8 +58,27 @@
         item.addEventListener('click', dell, {once: true});
     });
     
-
-
+ // mobile
+ // touchstart, touchmove, touchend, touchenter, touchleave
+ // touchcancel
+ 
+ 
+    const box = document.querySelector('.box');
+    box.addEventListener('touchstart', (e)=>{
+        //e.preventDefault();
+        console.log('start');
+        console.log(e.touches)
+    });
+    box.addEventListener('touchmove', (e)=>{
+        //e.preventDefault();
+        console.log(e.targetTouches[0].pageX);
+    });
+    box.addEventListener('touchend', (e)=>{
+        //e.preventDefault();
+        console.log('end');
+    });
+ 
+// touches, targetTouches,changedTouches
 
     
     //console.log(document.body);
