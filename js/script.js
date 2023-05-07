@@ -61,7 +61,7 @@
  // mobile
  // touchstart, touchmove, touchend, touchenter, touchleave
  // touchcancel
- 
+ // touches, targetTouches,changedTouches
  
     const box = document.querySelector('.box');
     box.addEventListener('touchstart', (e)=>{
@@ -78,8 +78,20 @@
         console.log('end');
     });
  
-// touches, targetTouches,changedTouches
+    //defer, async
 
+const p = document.querySelectorAll('p');
+console.log(p);
+
+
+function loadscript(src){
+    const script = document.createElement('script');
+    script.src=src;
+    script.async = false;
+    document.body.append(script);
+}
+loadscript("js/test.js");
+loadscript("js/someTest.js");
     
     //console.log(document.body);
     //console.log(document.documentElement);
